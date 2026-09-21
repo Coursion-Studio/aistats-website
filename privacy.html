@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Privacy Policy — AI Stats</title>
-  <meta name="description" content="AI Stats is a 100% on-device macOS app. We don't run a server, don't collect personal data, and don't use analytics or tracking." />
+  <meta name="description" content="AI Stats runs on your Mac, iPhone and iPad. There is no AI Stats server or account. Credentials and usage history stay on your device. The Mac app sends anonymous crash reports and usage counts, which you can switch off." />
   <meta name="theme-color" content="#100B1C" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png" />
@@ -27,44 +27,51 @@
     <main class="prose-page">
       <article class="prose">
         <h1>Privacy Policy</h1>
-        <p class="updated">Last updated: <time datetime="2026-04-14">April 14, 2026</time></p>
+        <p class="updated">Last updated: <time datetime="2026-09-21">September 21, 2026</time></p>
 
         <div class="card">
-          <p><strong>Short version:</strong> AI Stats is a fully on-device macOS app. We do not run any server that receives your data, we do not use analytics or tracking SDKs, and we do not collect, store, link, or share any personal information. Your credentials and usage history live on your Mac, not on ours.</p>
+          <p><strong>Short version:</strong> AI Stats runs entirely on your device. There is no AI Stats account and no AI Stats server. Your credentials and usage history stay on your Mac, iPhone or iPad. The Mac app sends anonymous crash reports and anonymous feature-usage counts, never linked to you, never used for tracking, and you can switch them off in Settings → General. The iPhone and iPad app sends nothing.</p>
         </div>
 
         <h2>1. Who we are</h2>
         <p>AI Stats ("the app") is developed and published by Coursion ("we", "us"). Contact: <a href="mailto:kuraydev.io@gmail.com">kuraydev.io@gmail.com</a>.</p>
 
         <h2>2. What AI Stats does</h2>
-        <p>AI Stats is a native macOS menu-bar utility that displays your own usage, limits, and spending across AI services you already have accounts with (e.g. Claude, ChatGPT, Codex, Cursor, Anthropic API, OpenAI API, Gemini).</p>
+        <p>AI Stats is a native app for Mac, iPhone and iPad that displays your own usage, limits, and spending across AI services you already have accounts with (e.g. Claude, ChatGPT, Codex, Cursor, Anthropic API, OpenAI API, Gemini).</p>
 
         <h2>3. Data we collect</h2>
-        <p><strong>None.</strong> AI Stats has no backend, no user account system, and no analytics. We do not receive or log any information about you, your device, your usage of the app, or your AI accounts.</p>
+        <p>AI Stats has no backend and no user account system. We never receive your credentials, your usage figures, or anything about your AI accounts.</p>
+        <p><strong>iPhone and iPad:</strong> nothing is collected.</p>
+        <p><strong>Mac:</strong> two kinds of anonymous diagnostics, both on by default and both switched off by the <em>Share anonymous usage &amp; crash data</em> setting in Settings → General:</p>
+        <ul>
+          <li><strong>Crash reports</strong>, sent to <a href="https://sentry.io/privacy/">Sentry</a>, so we can fix crashes. They contain the stack trace, app version and macOS version. Personal information is excluded.</li>
+          <li><strong>Feature-usage counts</strong>, sent to <a href="https://posthog.com/privacy">PostHog</a>, such as "app launched" or "account added", with the app version. They contain no names, account labels, credentials, usage figures, file paths or content, and are not tied to an identity.</li>
+        </ul>
+        <p>Neither is linked to you or used to track you across apps or websites.</p>
 
-        <h2>4. Data stored on your Mac</h2>
+        <h2>4. Data stored on your device</h2>
         <p>The app stores the following locally on your device:</p>
         <ul>
-          <li><strong>Credentials</strong> you enter when adding an account — API keys or provider session cookies — are stored in the macOS <strong>Keychain</strong>, encrypted by the operating system.</li>
+          <li><strong>Credentials</strong> you enter when adding an account — API keys or provider session cookies — are stored in the system <strong>Keychain</strong>, encrypted by the operating system.</li>
           <li><strong>Usage snapshots</strong> (quotas, limits, spending numbers returned by each provider) are cached in a local SwiftData database inside the app's App Group container so that the app and its widget can read the same data.</li>
           <li><strong>Preferences</strong> such as notification thresholds, polling pause state, and appearance options are stored in the app's own <code>UserDefaults</code>.</li>
         </ul>
-        <p>None of this ever leaves your Mac.</p>
+        <p>None of this ever leaves your device.</p>
 
         <h2>5. Network traffic</h2>
-        <p>The only network requests the app makes are <strong>directly from your Mac to the AI provider you chose</strong>, using credentials you entered for your own account (for example, calls to the Anthropic or OpenAI API, or fetches from the Claude / ChatGPT / Codex / Cursor web sessions you are signed into). AI Stats does not route this traffic through any intermediary.</p>
+        <p>The only network requests the app makes are <strong>directly from your device to the AI provider you chose</strong>, using credentials you entered for your own account (for example, calls to the Anthropic or OpenAI API, or fetches from the Claude / ChatGPT / Codex / Cursor web sessions you are signed into). AI Stats does not route this traffic through any intermediary. The only other requests are the anonymous Mac diagnostics described in section 3, and App Store purchases, which Apple handles.</p>
 
         <h2>6. Tracking, analytics, and advertising</h2>
-        <p>We do not use analytics SDKs, crash reporters that collect personal data, advertising frameworks, tracking pixels, or fingerprinting. The app's privacy manifest (<code>PrivacyInfo.xcprivacy</code>) reflects this: <code>NSPrivacyTracking = false</code> and no collected data types are declared.</p>
+        <p>We do not track you, show ads, use advertising frameworks, or fingerprint your device. Apart from the anonymous Mac diagnostics in section 3, no analytics are collected. The app's privacy manifest (<code>PrivacyInfo.xcprivacy</code>) declares <code>NSPrivacyTracking = false</code>, with crash data and product interaction listed as not linked to you and not used for tracking.</p>
 
         <h2>7. Children's privacy</h2>
-        <p>AI Stats is not directed at children. Because we do not collect any data from any user, we do not knowingly collect data from children either.</p>
+        <p>AI Stats is not directed at children. We do not knowingly collect personal data from anyone, including children.</p>
 
         <h2>8. Data deletion</h2>
-        <p>To remove all AI Stats data from your Mac, delete any accounts from within the app (this removes Keychain entries) and then uninstall the application. No data remains with us because we never had any.</p>
+        <p>To remove all AI Stats data from your device, delete any accounts from within the app (this removes their Keychain entries) and then delete the app. We hold nothing that identifies you, so there is nothing for us to delete on our side.</p>
 
         <h2>9. Third-party services</h2>
-        <p>When you add an account, AI Stats communicates with the AI provider you selected. That provider's privacy policy governs their handling of your account. AI Stats itself does not share any data with third parties because it does not hold any.</p>
+        <p>When you add an account, AI Stats communicates with the AI provider you selected. That provider's privacy policy governs their handling of your account. Anonymous Mac diagnostics go to Sentry and PostHog as described in section 3. AI Stats does not sell or share data with anyone else.</p>
 
         <h2>10. Changes to this policy</h2>
         <p>If we make material changes to this policy, we will update the "Last updated" date above and, for significant changes, note them in the app's release notes.</p>
