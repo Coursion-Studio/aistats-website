@@ -5,27 +5,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Press Kit — AI Stats</title>
   <meta name="description" content="Press kit for AI Stats: Every AI limit — Claude, ChatGPT, Gemini, Copilot — at a glance. Nothing leaves your device." />
-  <link rel="icon" type="image/png" href="icon.png" />
-  <link rel="stylesheet" href="styles.css" />
-  <meta name="theme-color" content="#0E1224" />
+  <meta name="theme-color" content="#120D1D" />
+  <link rel="stylesheet" href="stage.css?v=1d5ceac846" />
+  <link rel="stylesheet" href="site.css?v=e0a8cd12fb" />
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png" />
+  <link rel="apple-touch-icon" href="icon.png" />
+  <script defer src="home.js?v=efeef54634"></script>
 </head>
-<body>
-  <div class="container">
-    <nav class="nav">
-      <a class="nav-brand" href="index.html" style="color:inherit;">
-        <img class="brand-icon" src="icon.png" alt="" />
-        <span>AI Stats</span>
-      </a>
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="mailto:hello@coursion.studio" class="nav-cta">Contact</a>
+<body class="page">
+  <svg class="sprite" aria-hidden="true">
+    <symbol id="g-apple" viewBox="0 0 24 24"><path fill="currentColor" d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9-.7 0-1.8-.9-3-.8-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2.1-1.1 2.8-2.3.9-1.3 1.3-2.6 1.3-2.6s-2.5-1-2.5-3.8zM14.1 5.8c.6-.8 1.1-1.8 1-2.8-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.7-1 2.7 1 .1 2-.5 2.7-1.3z"/></symbol>
+  </svg>
+  <div class="bar solid js-bar">
+    <div class="bar-in">
+      <a class="bar-brand" href="index.html"><img src="img/app-icon.webp" alt="" width="26" height="26" /><span>AI Stats</span></a>
+      <nav class="bar-nav" aria-label="Main">
+        <a href="index.html#live">Menu bar</a>
+        <a href="index.html#providers">Providers</a>
+        <a href="index.html#widgets">Widgets</a>
+        <a href="index.html#privacy">Privacy</a>
+        <a href="index.html#pricing">Pricing</a>
+      </nav>
+      <div class="bar-act">
+        <a class="bar-btn bar-get" href="https://apps.apple.com/app/id6762005507"><svg aria-hidden="true"><use href="#g-apple"/></svg>Download</a>
+        <button class="bar-menu js-bar-menu" type="button" aria-expanded="false" aria-controls="bar-sheet" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path class="l1" d="M5 9h14"/><path class="l2" d="M5 15h14"/></svg></button>
       </div>
-    </nav>
-
-    <main class="prose-page">
-      <article class="prose">
-      <div class="section-label">Press Kit</div>
+    </div>
+    <div class="bar-sheet js-bar-sheet" id="bar-sheet" hidden>
+      <nav class="bar-sheet-nav" aria-label="Site">
+        <a href="index.html#live">Menu bar</a>
+        <a href="index.html#providers">Providers</a>
+        <a href="index.html#widgets">Widgets</a>
+        <a href="index.html#privacy">Privacy</a>
+        <a href="index.html#pricing">Pricing</a>
+      </nav>
+    </div>
+  </div>
+  <header class="page-head">
+    <div class="mesh" aria-hidden="true"><i class="m1"></i><i class="m2"></i><i class="m3"></i><i class="m4"></i></div>
+    <div class="container">
+      <div class="bar-space" aria-hidden="true"></div>
+      <p class="eyebrow">Press Kit</p>
       <h1>AI Stats</h1>
+    </div>
+  </header>
+  <main class="container">
+    <article class="prose">
       <p><em>Every AI limit — Claude, ChatGPT, Gemini, Copilot — at a glance. Nothing leaves your device.</em></p>
 
       <h2>Quick facts</h2>
@@ -33,7 +58,7 @@
         <li><strong>What:</strong> Tracks usage, quotas, limits and spending across Claude, ChatGPT, Codex, Gemini, Copilot, Cursor and OpenRouter</li>
         <li><strong>Platform:</strong> macOS menu bar app and iOS app with Home/Lock Screen widgets; 27 languages</li>
         <li><strong>Privacy:</strong> Connects directly to each provider; nothing stored on any server — the developer cannot see your usage</li>
-        <li><strong>Price:</strong> One-time purchase, no subscription</li>
+        <li><strong>Price:</strong> Free to download, with one account free forever; AI Stats Pro is a one-time in-app purchase, no subscription</li>
         <li><strong>Developer:</strong> Kuray Ogun — solo developer, Coursion</li>
       </ul>
 
@@ -54,22 +79,18 @@
       </p>
       <p><a href="https://apps.apple.com/app/id6762005507">View on the App Store →</a></p>
     </article>
-
-    </main>
-
+  </main>
+  <div class="container">
     <footer>
-      <div class="footer-row">
-        <div>© <span id="year">2026</span> Coursion. All rights reserved.</div>
-        <div class="footer-links">
-          <a href="index.html">Home</a>
-          <a href="mailto:support@coursion.studio">Support</a>
-        </div>
+      <div class="links">
+        <a href="index.html">Home</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="press.html">Press</a>
+        <a href="mailto:support@coursion.studio">Contact</a>
+        <a href="https://x.com/kuraydev" target="_blank" rel="noopener">@kuraydev</a>
       </div>
+      <div>© 2026 Coursion Studio</div>
     </footer>
   </div>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
