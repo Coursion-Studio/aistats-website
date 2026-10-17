@@ -21,7 +21,7 @@
   }
 
   $$(".reveal").forEach((el) => {
-    if (el.classList.contains("stage-hero")) {
+    if (el.classList.contains("hero")) {
       if (frozen) { el.classList.add("in"); return; }
       requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add("in")));
       setTimeout(() => el.classList.add("in"), 120);
@@ -109,50 +109,82 @@
     }
   }
 
-  const hero = $(".js-hero");
-  if (hero) {
-    const items = $$(".fan-item", hero);
-    const n = items.length;
-    items.forEach((el, i) => {
-      const deg = 160 + (20 - 160) * (n > 1 ? i / (n - 1) : 0.5);
-      const rad = (deg * Math.PI) / 180;
-      el.style.setProperty("--i", i);
-      el.style.setProperty("--x", (Math.cos(rad) * 300).toFixed(1));
-      el.style.setProperty("--y", (60 + Math.sin(rad) * 128).toFixed(1));
-      el.style.setProperty("--r", ((90 - deg) * -0.06).toFixed(2) + "deg");
-    });
-    const paintPct = (el) => {
-      const v = +el.dataset.v;
-      el.textContent = pct(v);
-      el.dataset.s = status(v);
+  const board = $(".js-lb");
+  if (board) {
+    const header = board.closest("[data-live]");
+    const rows = $$(".lb-row", board).map((el) => ({ el, v: +el.dataset.v, reset: +el.dataset.reset }));
+    const short = (s) => {
+      s = Math.max(0, Math.round(s));
+      const d = Math.floor(s / 86400), h = Math.floor((s % 86400) / 3600), m = Math.floor((s % 3600) / 60), sec = s % 60;
+      const p = (x) => String(x).padStart(2, "0");
+      return d ? `${d}d ${h}h` : h ? `${h}h ${p(m)}m ${p(sec)}s` : `${m}m ${p(sec)}s`;
     };
-    const paintRing = (el) => {
-      const v = +el.dataset.v;
-      el.style.setProperty("--v", Math.min(v, 100));
-      el.dataset.s = status(v);
+    const hm = (s) => {
+      const h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60);
+      return h ? `${h}h ${String(m).padStart(2, "0")}m` : `${m}m`;
     };
-    const pcts = $$(".js-pct", hero);
-    const rings = $$(".js-ring", hero);
-    pcts.forEach(paintPct);
-    rings.forEach(paintRing);
-    const header = hero.closest("[data-live]");
-    let k = 0;
-    setInterval(() => {
-      if (!isLive(header) || still.matches) return;
-      k++;
-      const el = pcts[(k * 3) % pcts.length];
-      let v = +el.dataset.v + 1;
-      if (v > 98) v = 4;
-      el.dataset.v = v;
-      paintPct(el);
-      if (k % 2 === 0) {
-        const r = rings[(k / 2) % rings.length];
-        let rv = +r.dataset.v + 2;
-        if (rv > 97) rv = 12;
-        r.dataset.v = rv;
-        paintRing(r);
+    const pill = $(".js-bar-live");
+    const nextEl = $(".js-lb-next");
+    const upd = $(".js-lb-upd");
+    let age = 12;
+    function paint() {
+      rows.forEach((r) => {
+        const st = status(r.v);
+        r.el.dataset.s = st;
+        r.el.style.setProperty("--v", r.v);
+        $(".lb-pct", r.el).textContent = Math.round(r.v) + "%";
+        $(".js-cd", r.el).textContent = short(r.reset);
+      });
+      const c = rows[0];
+      nextEl.textContent = hm(c.reset);
+      upd.textContent = age + "s";
+      if (pill) {
+        const st = status(c.v);
+        const b = $(".js-bl-pct", pill);
+        b.textContent = Math.round(c.v) + "%";
+        b.dataset.s = st;
+        pill.style.setProperty("--bl-v", Math.min(c.v, 100));
+        pill.style.setProperty("--bl-c", `var(--st-${st === "over" ? "over" : st})`);
+        $(".js-bl-reset", pill).textContent = hm(c.reset);
+        pill.setAttribute("aria-label", `Demo: Claude 5-hour limit at ${Math.round(c.v)}%, resets in ${hm(c.reset)}`);
       }
-    }, 1600);
+    }
+    paint();
+    const horizon = $(".js-horizon");
+    let bars = [];
+    if (horizon) {
+      const n = innerWidth < 720 ? 48 : 120;
+      for (let i = 0; i < n; i++) {
+        const b = document.createElement("i");
+        const h = 18 + 46 * Math.abs(Math.sin(i * 0.37) * Math.cos(i * 0.11)) + (i % 7) * 3;
+        b.style.setProperty("--h", h.toFixed(1));
+        const v = (h - 18) / 64 * 100;
+        if (i % 9 === 0) b.dataset.s = status(55 + v * 0.45);
+        horizon.appendChild(b);
+        bars.push(b);
+      }
+    }
+    setTimeout(() => header.classList.add("settled"), 2600);
+    if (!frozen) {
+      let t = 0;
+      setInterval(() => {
+        if (document.hidden) return;
+        t++;
+        rows.forEach((r) => {
+          r.reset -= 1;
+          if (r.reset <= 0) { r.reset = 5 * 3600; r.v = 3; }
+        });
+        if (t % 4 === 0 && rows[0].v < 99) rows[0].v = Math.round((rows[0].v + 0.3) * 10) / 10;
+        age = age >= 59 ? 1 : age + 1;
+        paint();
+        if (t % 3 === 0 && bars.length && isLive(header) && !still.matches) {
+          for (let k = 0; k < 6; k++) {
+            const b = bars[(t * 7 + k * 19) % bars.length];
+            b.style.setProperty("--h", (16 + ((t * 13 + k * 29) % 62)).toFixed(1));
+          }
+        }
+      }, 1000);
+    }
   }
 
   const ACCOUNTS = [

@@ -10,9 +10,8 @@
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png" />
   <link rel="apple-touch-icon" href="icon.png" />
   <link rel="stylesheet" href="stage.css?v=1d5ceac846" />
-  <link rel="stylesheet" href="site.css?v=e0a8cd12fb" />
-  <link rel="stylesheet" href="home.css?v=32619c29dc" />
-  <link rel="preload" as="image" href="img/star.webp" />
+  <link rel="stylesheet" href="site.css?v=0084aacb3d" />
+  <link rel="stylesheet" href="home.css?v=0ae43e0b9e" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://aistats.coursion.studio/" />
   <meta property="og:site_name" content="AI Stats" />
@@ -40,7 +39,7 @@
   }
   </script>
   <script>document.documentElement.classList.add("js");window.__rv=setTimeout(function(){document.documentElement.classList.add("reveal-all")},4000);</script>
-  <script defer src="home.js?v=efeef54634"></script>
+  <script defer src="home.js?v=cacb8376cc"></script>
   <script defer src="https://polaris-backend-489776622782.europe-west1.run.app/api/v1/analytics/t.js" data-site="aistats.coursion.studio"></script>
 </head>
 <body class="home">
@@ -59,7 +58,6 @@
   <div class="bar js-bar">
     <div class="bar-in">
       <a class="bar-brand" href="#top"><img src="img/app-icon.webp" alt="" width="26" height="26" /><span>AI Stats</span></a>
-      <span class="bar-ver">2.0</span>
       <nav class="bar-nav" aria-label="Main">
         <a href="#live">Menu bar</a>
         <a href="#providers">Providers</a>
@@ -69,7 +67,8 @@
         <a href="#pricing">Pricing</a>
       </nav>
       <div class="bar-act">
-        <a class="bar-btn bar-get" href="https://apps.apple.com/app/id6762005507"><svg aria-hidden="true"><use href="#g-apple"/></svg>Download</a>
+        <a class="bar-live js-bar-live" href="#top" aria-label="Demo: Claude 5-hour limit at 62%, resets in 2 hours 14 minutes"><svg class="bl-ring" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7.5" pathLength="100"/><circle class="v" cx="10" cy="10" r="7.5" pathLength="100"/></svg><span class="bl-name">Claude 5h</span><b class="js-bl-pct" data-s="caution">62%</b><span class="bl-sep" aria-hidden="true"></span><span class="bl-reset js-bl-reset">2h 14m</span></a>
+        <a class="bar-btn bar-get" href="https://apps.apple.com/app/id6762005507"><svg aria-hidden="true"><use href="#g-apple"/></svg>Get it free</a>
         <button class="bar-menu js-bar-menu" type="button" aria-expanded="false" aria-controls="bar-sheet" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path class="l1" d="M5 9h14"/><path class="l2" d="M5 15h14"/></svg></button>
       </div>
     </div>
@@ -85,39 +84,88 @@
     </div>
   </div>
 
-  <header id="top" class="stage-hero reveal" data-live>
-    <div class="mesh" aria-hidden="true"><i class="m1"></i><i class="m2"></i><i class="m3"></i><i class="m4"></i></div>
+  <header id="top" class="hero reveal" data-live>
+    <div class="hero-bg" aria-hidden="true">
+      <div class="hero-grid"></div>
+      <svg class="hero-spark" viewBox="0 0 1440 640" preserveAspectRatio="none"><path class="sp1" d="M0 560 C 90 552, 150 520, 230 528 S 380 556, 460 500 S 600 440, 690 466 S 840 510, 930 440 S 1080 370, 1170 396 S 1330 350, 1440 320"/><path class="sp2" d="M0 590 C 120 584, 200 560, 300 568 S 470 594, 560 560 S 720 520, 820 536 S 990 560, 1080 506 S 1260 466, 1440 450"/></svg>
+      <i class="hg hg1"></i><i class="hg hg2"></i>
+      <div class="horizon js-horizon"></div>
+    </div>
     <div class="container">
-      <div class="bar-space" aria-hidden="true"></div>
-
-      <div class="fan hero-fan js-hero" role="img" aria-label="The AI Stats app icon inside three usage rings, with Claude, ChatGPT, Codex, Cursor, GitHub Copilot, Gemini and OpenRouter fanned out beneath it, each showing how much of its limit is used.">
-        <svg class="rings" viewBox="0 0 240 240" aria-hidden="true">
-          <circle class="ring-track" cx="120" cy="120" r="112" />
-          <circle class="ring-track" cx="120" cy="120" r="101" />
-          <circle class="ring-track" cx="120" cy="120" r="90" />
-          <circle class="ring js-ring" data-v="41" cx="120" cy="120" r="112" pathLength="100" />
-          <circle class="ring js-ring" data-v="68" cx="120" cy="120" r="101" pathLength="100" />
-          <circle class="ring js-ring" data-v="86" cx="120" cy="120" r="90" pathLength="100" />
-        </svg>
-        <img class="fan-icon star" src="img/star.webp" alt="" width="150" height="150" fetchpriority="high" />
-        <span class="fan-item"><span class="tile logo"><img src="img/claude.webp" alt="" width="56" height="56" /></span><b>Claude</b><em class="pct js-pct" data-v="62">62%</em></span>
-        <span class="fan-item"><span class="tile logo"><img src="img/chatgpt.webp" alt="" width="56" height="56" /></span><b>ChatGPT</b><em class="pct js-pct" data-v="85">85%</em></span>
-        <span class="fan-item"><span class="tile logo"><img src="img/codex.webp" alt="" width="56" height="56" /></span><b>Codex</b><em class="pct js-pct" data-v="73">73%</em></span>
-        <span class="fan-item"><span class="tile logo"><img src="img/cursor.webp" alt="" width="56" height="56" /></span><b>Cursor</b><em class="pct js-pct" data-v="92">92%</em></span>
-        <span class="fan-item"><span class="tile logo glyph" style="--g:#6E40C9"><svg><use href="#g-copilot"/></svg></span><b>Copilot</b><em class="pct js-pct" data-v="87">87%</em></span>
-        <span class="fan-item"><span class="tile logo"><img src="img/gemini.webp" alt="" width="56" height="56" /></span><b>Gemini</b><em class="pct js-pct" data-v="7">7%</em></span>
-        <span class="fan-item"><span class="tile logo glyph" style="--g:#14B8A6"><svg><use href="#g-openrouter"/></svg></span><b>OpenRouter</b><em class="pct js-pct" data-v="63">63%</em></span>
-      </div>
-
-      <div class="hero-copy">
-        <p class="eyebrow rise">AI Stats 2.0 · Now free to download</p>
-        <h1 class="rise" style="--d:.08s">Every AI limit you keep hitting,<br /> one glance away.</h1>
-        <p class="sub rise" style="--d:.14s">Usage, reset countdowns and spending for Claude, ChatGPT, Codex, Cursor, GitHub Copilot, Gemini and OpenRouter. In your Mac's menu bar, and on your iPhone and iPad.</p>
-        <div class="cta-row rise" style="--d:.2s">
-          <a class="btn primary" href="https://apps.apple.com/app/id6762005507"><svg class="btn-ico" aria-hidden="true"><use href="#g-apple"/></svg>Download on the App Store</a>
-          <a class="btn outline" href="#live">See it live</a>
+      <div class="bar-space"></div>
+      <div class="hero-split">
+        <div class="hero-text">
+          <p class="eyebrow rise">AI Stats 2.0 · Free to download</p>
+          <h1 class="rise" style="--d:.06s">Know the reset before you hit the limit.</h1>
+          <p class="sub rise" style="--d:.12s">Session, weekly and per-model limits for Claude, ChatGPT, Codex, Cursor, GitHub Copilot, Gemini and OpenRouter, each with its countdown. In the Mac menu bar and on iPhone and iPad widgets.</p>
+          <div class="cta-row rise" style="--d:.18s">
+            <a class="btn primary" href="https://apps.apple.com/app/id6762005507"><svg class="btn-ico" aria-hidden="true"><use href="#g-apple"/></svg>Download on the App Store</a>
+            <a class="btn outline" href="#live">See it live</a>
+          </div>
+          <p class="req-note rise" style="--d:.22s">One account free forever · macOS 14, iOS and iPadOS 18 or later</p>
         </div>
-        <p class="req-note rise" style="--d:.24s">One account free forever · Mac, iPhone and iPad · macOS 14, iOS 18 or later</p>
+        <div class="hero-board rise" style="--d:.1s">
+          <div class="lb" role="img" aria-label="Demo dashboard: six AI accounts with their usage bars, colour-coded by status, and the time until each limit resets.">
+            <div class="lb-head">
+              <span class="lb-live"><i></i>Live</span>
+              <span class="lb-title">6 accounts</span>
+              <span class="lb-upd">Updated <b class="js-lb-upd">12s</b> ago</span>
+            </div>
+            <div class="lb-sum">
+              <span><small>Avg 5h</small><b data-s="caution">68%</b></span>
+              <span><small>Warnings</small><b data-s="over">3</b></span>
+              <span class="lb-next"><small>Next reset</small><b><span class="js-lb-next">2h 14m</span></b><em>Claude 5-hour</em></span>
+            </div>
+            <ul class="lb-rows js-lb">
+            <li class="lb-row" style="--i:0;--v:62" data-v="62" data-reset="8049">
+              <span class="tile logo xs"><img src="img/claude.webp" alt="" width="28" height="28" /></span>
+              <span class="lb-name"><b>Claude</b><small>5-Hour</small></span>
+              <span class="lb-bar"><s></s><i style="--at:60"></i><i style="--at:80"></i><i style="--at:90"></i></span>
+              <em class="lb-pct">62%</em>
+              <span class="lb-reset"><svg aria-hidden="true"><use href="#g-clock"/></svg><span class="js-cd"></span></span>
+            </li>
+            <li class="lb-row" style="--i:1;--v:85" data-v="85" data-reset="17460">
+              <span class="tile logo xs"><img src="img/chatgpt.webp" alt="" width="28" height="28" /></span>
+              <span class="lb-name"><b>ChatGPT</b><small>Premium</small></span>
+              <span class="lb-bar"><s></s><i style="--at:60"></i><i style="--at:80"></i><i style="--at:90"></i></span>
+              <em class="lb-pct">85%</em>
+              <span class="lb-reset"><svg aria-hidden="true"><use href="#g-clock"/></svg><span class="js-cd"></span></span>
+            </li>
+            <li class="lb-row" style="--i:2;--v:73" data-v="73" data-reset="212700">
+              <span class="tile logo xs"><img src="img/codex.webp" alt="" width="28" height="28" /></span>
+              <span class="lb-name"><b>Codex</b><small>Weekly</small></span>
+              <span class="lb-bar"><s></s><i style="--at:60"></i><i style="--at:80"></i><i style="--at:90"></i></span>
+              <em class="lb-pct">73%</em>
+              <span class="lb-reset"><svg aria-hidden="true"><use href="#g-clock"/></svg><span class="js-cd"></span></span>
+            </li>
+            <li class="lb-row" style="--i:3;--v:92" data-v="92" data-reset="1052400">
+              <span class="tile logo xs"><img src="img/cursor.webp" alt="" width="28" height="28" /></span>
+              <span class="lb-name"><b>Cursor</b><small>Premium</small></span>
+              <span class="lb-bar"><s></s><i style="--at:60"></i><i style="--at:80"></i><i style="--at:90"></i></span>
+              <em class="lb-pct">92%</em>
+              <span class="lb-reset"><svg aria-hidden="true"><use href="#g-clock"/></svg><span class="js-cd"></span></span>
+            </li>
+            <li class="lb-row" style="--i:4;--v:87" data-v="87" data-reset="784800">
+              <span class="tile logo xs glyph" style="--g:#6E40C9"><svg><use href="#g-copilot"/></svg></span>
+              <span class="lb-name"><b>GitHub Copilot</b><small>Premium requests</small></span>
+              <span class="lb-bar"><s></s><i style="--at:60"></i><i style="--at:80"></i><i style="--at:90"></i></span>
+              <em class="lb-pct">87%</em>
+              <span class="lb-reset"><svg aria-hidden="true"><use href="#g-clock"/></svg><span class="js-cd"></span></span>
+            </li>
+            <li class="lb-row" style="--i:5;--v:7" data-v="7" data-reset="51600">
+              <span class="tile logo xs"><img src="img/gemini.webp" alt="" width="28" height="28" /></span>
+              <span class="lb-name"><b>Gemini</b><small>Daily requests</small></span>
+              <span class="lb-bar"><s></s><i style="--at:60"></i><i style="--at:80"></i><i style="--at:90"></i></span>
+              <em class="lb-pct">7%</em>
+              <span class="lb-reset"><svg aria-hidden="true"><use href="#g-clock"/></svg><span class="js-cd"></span></span>
+            </li>
+            </ul>
+          </div>
+          <div class="lb-toast" aria-hidden="true">
+            <img src="img/app-icon.webp" alt="" width="28" height="28" />
+            <span><b>Cursor — Premium</b>Usage at 92% — Almost at your limit!</span>
+          </div>
+        </div>
       </div>
     </div>
   </header>
