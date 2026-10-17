@@ -1,300 +1,438 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Stats — All your AI usage, in one menu bar</title>
-  <meta name="description" content="AI Stats is a native macOS menu bar app that tracks usage, limits, and spending across Claude, ChatGPT, Codex, Cursor, Gemini, and more — 100% on-device." />
-  <meta name="theme-color" content="#100B1C" />
-
-  <meta property="og:title" content="AI Stats — All your AI usage, in one menu bar" />
-  <meta property="og:description" content="Native macOS app. Track usage, limits, and spending across every AI account you use. 100% on-device." />
-  <meta property="og:type" content="website" />
-
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Stats — Every AI limit, one glance away</title>
+  <meta name="description" content="AI Stats tracks usage limits, resets and spending across Claude, ChatGPT, Codex, Cursor, GitHub Copilot, Gemini and OpenRouter, in your Mac menu bar and on iPhone and iPad widgets. Free for one account, forever. No AI Stats account, no AI Stats server." />
+  <link rel="canonical" href="https://aistats.coursion.studio/" />
+  <meta name="theme-color" content="#120D1D" />
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png" />
   <link rel="apple-touch-icon" href="icon.png" />
+  <link rel="stylesheet" href="stage.css?v=1d5ceac846" />
+  <link rel="stylesheet" href="site.css?v=e0a8cd12fb" />
+  <link rel="stylesheet" href="home.css?v=32619c29dc" />
+  <link rel="preload" as="image" href="img/star.webp" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://aistats.coursion.studio/" />
+  <meta property="og:site_name" content="AI Stats" />
+  <meta property="og:title" content="AI Stats 2.0 — Every AI limit, one glance away" />
+  <meta property="og:description" content="Usage limits, reset countdowns and spending for Claude, ChatGPT, Codex, Cursor, GitHub Copilot, Gemini and OpenRouter. Mac, iPhone and iPad. Free for one account, forever." />
   <meta property="og:image" content="https://aistats.coursion.studio/icon@2x.png" />
+  <meta property="og:image:alt" content="The AI Stats app icon" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@kuraydev" />
+  <meta name="twitter:title" content="AI Stats 2.0 — Every AI limit, one glance away" />
+  <meta name="twitter:description" content="Usage limits, resets and spending across your AI accounts, in the Mac menu bar and on iPhone and iPad widgets. Free for one account, forever." />
+  <meta name="twitter:image" content="https://aistats.coursion.studio/icon@2x.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "AI Stats",
+    "url": "https://aistats.coursion.studio/",
+    "image": "https://aistats.coursion.studio/icon@2x.png",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "macOS 14 or later, iOS 18 or later, iPadOS 18 or later",
+    "downloadUrl": "https://apps.apple.com/app/id6762005507",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "publisher": { "@type": "Organization", "name": "Coursion Studio" }
+  }
+  </script>
+  <script>document.documentElement.classList.add("js");window.__rv=setTimeout(function(){document.documentElement.classList.add("reveal-all")},4000);</script>
+  <script defer src="home.js?v=efeef54634"></script>
   <script defer src="https://polaris-backend-489776622782.europe-west1.run.app/api/v1/analytics/t.js" data-site="aistats.coursion.studio"></script>
 </head>
-<body>
-  <div class="container">
-    <nav class="nav">
-      <div class="nav-brand">
-        <img class="brand-icon" src="icon.png" alt="" />
-        <span>AI Stats</span>
-      </div>
-      <div class="nav-links">
-        <a href="#features">Features</a>
-        <a href="#showcase">Tour</a>
+<body class="home">
+  <svg class="sprite" aria-hidden="true">
+    <symbol id="g-copilot" viewBox="0 0 24 24"><path d="M9 4.5c-2 0-3 1-3 3v2.3c0 1.2-.7 1.9-2 2.2 1.3.3 2 1 2 2.2v2.3c0 2 1 3 3 3M15 4.5c2 0 3 1 3 3v2.3c0 1.2.7 1.9 2 2.2-1.3.3-2 1-2 2.2v2.3c0 2-1 3-3 3" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="g-openrouter" viewBox="0 0 24 24"><path d="M12 20.5V12M12 12 6.5 5.5M12 12l5.5-6.5M4 5.5h4.5V10M20 5.5h-4.5V10" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="g-apple" viewBox="0 0 24 24"><path fill="currentColor" d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9-.7 0-1.8-.9-3-.8-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2.1-1.1 2.8-2.3.9-1.3 1.3-2.6 1.3-2.6s-2.5-1-2.5-3.8zM14.1 5.8c.6-.8 1.1-1.8 1-2.8-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.7-1 2.7 1 .1 2-.5 2.7-1.3z"/></symbol>
+    <symbol id="g-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="m7.5 12.3 3 3 6-6.3" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="g-clock" viewBox="0 0 24 24"><path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3M4.5 4.5v3.7h3.7M12 8v4.3l2.8 1.7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="g-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="g-bell" viewBox="0 0 24 24"><path fill="currentColor" d="M12 3a1.4 1.4 0 0 0-1.4 1.4v.7A6.5 6.5 0 0 0 5.5 11.5v3.2c0 .8-.3 1.6-.8 2.3l-.9 1.2a1 1 0 0 0 .8 1.6h14.8a1 1 0 0 0 .8-1.6l-.9-1.2a3.9 3.9 0 0 1-.8-2.3v-3.2a6.5 6.5 0 0 0-5.1-6.4v-.7A1.4 1.4 0 0 0 12 3zm-2.4 17.8a2.5 2.5 0 0 0 4.8 0z"/></symbol>
+  </svg>
+
+  <a class="skip" href="#live">Skip to the tour</a>
+
+  <div class="bar js-bar">
+    <div class="bar-in">
+      <a class="bar-brand" href="#top"><img src="img/app-icon.webp" alt="" width="26" height="26" /><span>AI Stats</span></a>
+      <span class="bar-ver">2.0</span>
+      <nav class="bar-nav" aria-label="Main">
+        <a href="#live">Menu bar</a>
+        <a href="#providers">Providers</a>
+        <a href="#widgets">Widgets</a>
+        <a href="#themes">Themes</a>
         <a href="#privacy">Privacy</a>
-        <a href="mailto:support@coursion.studio">Contact</a>
-        <a href="https://apps.apple.com/app/id6762005507" class="nav-cta" aria-label="Download on the Mac App Store">Download</a>
+        <a href="#pricing">Pricing</a>
+      </nav>
+      <div class="bar-act">
+        <a class="bar-btn bar-get" href="https://apps.apple.com/app/id6762005507"><svg aria-hidden="true"><use href="#g-apple"/></svg>Download</a>
+        <button class="bar-menu js-bar-menu" type="button" aria-expanded="false" aria-controls="bar-sheet" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path class="l1" d="M5 9h14"/><path class="l2" d="M5 15h14"/></svg></button>
       </div>
-    </nav>
+    </div>
+    <div class="bar-sheet js-bar-sheet" id="bar-sheet" hidden>
+      <nav class="bar-sheet-nav" aria-label="Site">
+        <a href="#live">Menu bar</a>
+        <a href="#providers">Providers</a>
+        <a href="#widgets">Widgets</a>
+        <a href="#themes">Themes</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#pricing">Pricing</a>
+      </nav>
+    </div>
+  </div>
 
-    <header class="hero">
+  <header id="top" class="stage-hero reveal" data-live>
+    <div class="mesh" aria-hidden="true"><i class="m1"></i><i class="m2"></i><i class="m3"></i><i class="m4"></i></div>
+    <div class="container">
+      <div class="bar-space" aria-hidden="true"></div>
+
+      <div class="fan hero-fan js-hero" role="img" aria-label="The AI Stats app icon inside three usage rings, with Claude, ChatGPT, Codex, Cursor, GitHub Copilot, Gemini and OpenRouter fanned out beneath it, each showing how much of its limit is used.">
+        <svg class="rings" viewBox="0 0 240 240" aria-hidden="true">
+          <circle class="ring-track" cx="120" cy="120" r="112" />
+          <circle class="ring-track" cx="120" cy="120" r="101" />
+          <circle class="ring-track" cx="120" cy="120" r="90" />
+          <circle class="ring js-ring" data-v="41" cx="120" cy="120" r="112" pathLength="100" />
+          <circle class="ring js-ring" data-v="68" cx="120" cy="120" r="101" pathLength="100" />
+          <circle class="ring js-ring" data-v="86" cx="120" cy="120" r="90" pathLength="100" />
+        </svg>
+        <img class="fan-icon star" src="img/star.webp" alt="" width="150" height="150" fetchpriority="high" />
+        <span class="fan-item"><span class="tile logo"><img src="img/claude.webp" alt="" width="56" height="56" /></span><b>Claude</b><em class="pct js-pct" data-v="62">62%</em></span>
+        <span class="fan-item"><span class="tile logo"><img src="img/chatgpt.webp" alt="" width="56" height="56" /></span><b>ChatGPT</b><em class="pct js-pct" data-v="85">85%</em></span>
+        <span class="fan-item"><span class="tile logo"><img src="img/codex.webp" alt="" width="56" height="56" /></span><b>Codex</b><em class="pct js-pct" data-v="73">73%</em></span>
+        <span class="fan-item"><span class="tile logo"><img src="img/cursor.webp" alt="" width="56" height="56" /></span><b>Cursor</b><em class="pct js-pct" data-v="92">92%</em></span>
+        <span class="fan-item"><span class="tile logo glyph" style="--g:#6E40C9"><svg><use href="#g-copilot"/></svg></span><b>Copilot</b><em class="pct js-pct" data-v="87">87%</em></span>
+        <span class="fan-item"><span class="tile logo"><img src="img/gemini.webp" alt="" width="56" height="56" /></span><b>Gemini</b><em class="pct js-pct" data-v="7">7%</em></span>
+        <span class="fan-item"><span class="tile logo glyph" style="--g:#14B8A6"><svg><use href="#g-openrouter"/></svg></span><b>OpenRouter</b><em class="pct js-pct" data-v="63">63%</em></span>
+      </div>
+
       <div class="hero-copy">
-        <img class="hero-app-icon" src="icon-transparent.png" alt="AI Stats app icon" />
-        <span class="hero-eyebrow"><span class="dot"></span>Native macOS · Menu bar</span>
-        <h1>All your AI usage,<br/><span class="grad">in one menu bar.</span></h1>
-        <p>AI Stats tracks quotas, limits, and spending across every AI account you use — Claude, ChatGPT, Codex, Cursor, Anthropic, OpenAI, Gemini — and keeps it all on your Mac.</p>
-        <div class="cta-row">
-          <a href="https://apps.apple.com/app/id6762005507" class="btn btn-primary" aria-label="Download on the Mac App Store">Download on the Mac App Store</a>
-          <a href="#features" class="btn btn-ghost">See features</a>
+        <p class="eyebrow rise">AI Stats 2.0 · Now free to download</p>
+        <h1 class="rise" style="--d:.08s">Every AI limit you keep hitting,<br /> one glance away.</h1>
+        <p class="sub rise" style="--d:.14s">Usage, reset countdowns and spending for Claude, ChatGPT, Codex, Cursor, GitHub Copilot, Gemini and OpenRouter. In your Mac's menu bar, and on your iPhone and iPad.</p>
+        <div class="cta-row rise" style="--d:.2s">
+          <a class="btn primary" href="https://apps.apple.com/app/id6762005507"><svg class="btn-ico" aria-hidden="true"><use href="#g-apple"/></svg>Download on the App Store</a>
+          <a class="btn outline" href="#live">See it live</a>
         </div>
-        <div class="hero-meta">Requires macOS 14 Sonoma or later · Apple Silicon &amp; Intel</div>
+        <p class="req-note rise" style="--d:.24s">One account free forever · Mac, iPhone and iPad · macOS 14, iOS 18 or later</p>
       </div>
-      <div class="hero-visual" aria-hidden="true">
-        <img class="hero-shot" src="screenshots/menubar.png" alt="AI Stats menu bar popover" onerror="this.outerHTML='&lt;div class=&quot;hero-shot-placeholder&quot;&gt;&lt;span&gt;Drop screenshots/menubar.png here&lt;/span&gt;&lt;/div&gt;'" />
-      </div>
-    </header>
+    </div>
+  </header>
 
-    <section id="showcase" class="showcase">
-      <div class="section-eyebrow reveal">Tour</div>
-      <h2 class="reveal">See it in action.</h2>
-      <p class="section-lead reveal">Every surface — the live dashboard, per-account detail, widgets, settings — is native SwiftUI and built to feel like a first-party macOS app.</p>
+  <main>
 
-      <!-- Live dashboard — full-width hero shot -->
-      <div class="showcase-hero reveal">
-        <div class="showcase-kicker">Live Dashboard</div>
-        <h3>Every account, one glance.</h3>
-        <p>Your whole AI footprint on one page — Claude, ChatGPT, Codex, Cursor, Gemini — colored by category, sorted by urgency. Click any account to drill in.</p>
-        <div class="showcase-media wide">
-          <img src="screenshots/live-dashboard.png" alt="AI Stats live dashboard" />
+    <section id="live" class="sec sec-split sec-live reveal" data-live aria-labelledby="live-title">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="container split">
+        <div class="split-copy">
+          <h2 id="live-title" class="rise">Your limits, ticking in the menu bar</h2>
+          <p class="rise" style="--d:.06s">Every session, weekly and per-model limit, with the countdown to its reset. Switch accounts at the top, and the menu bar follows the one you care about.</p>
+          <p class="aside rise" style="--d:.1s">Click an account, or press <span class="combo"><kbd>←</kbd><kbd>→</kbd></span> while it's on screen.</p>
         </div>
-      </div>
-
-      <!-- Per-account detail — alternating rows, one per provider -->
-      <div class="showcase-row reveal">
-        <div class="showcase-text">
-          <div class="showcase-kicker">Cursor</div>
-          <h3>Premium, Auto, API — separated.</h3>
-          <p>Cursor's three quota buckets show as their own metric cards so you can tell exactly which one you're about to burn.</p>
-        </div>
-        <div class="showcase-media"><img src="screenshots/cursor.png" alt="Cursor account detail" /></div>
-      </div>
-
-      <div class="showcase-row reveal reverse">
-        <div class="showcase-text">
-          <div class="showcase-kicker">Codex</div>
-          <h3>Subscription status at a glance.</h3>
-          <p>Days until renewal, plan tier, and — when OpenAI exposes them — the 5h / Weekly rate-limit windows straight from the backend.</p>
-        </div>
-        <div class="showcase-media"><img src="screenshots/development-account.png" alt="Codex account detail" /></div>
-      </div>
-
-      <div class="showcase-row reveal">
-        <div class="showcase-text">
-          <div class="showcase-kicker">Gemini</div>
-          <h3>Daily requests &amp; tokens.</h3>
-          <p>Tracks your own Gemini API key's usage against the free-tier daily limits — AI Stats validates the key without burning your quota.</p>
-        </div>
-        <div class="showcase-media"><img src="screenshots/gemini.png" alt="Gemini account detail" /></div>
-      </div>
-
-      <!-- Spending — alternating row -->
-      <div class="showcase-row reveal reverse">
-        <div class="showcase-text">
-          <div class="showcase-kicker">Spending</div>
-          <h3>Know what each plan costs you.</h3>
-          <p>Tag monthly prices per account, group by category, see a month-over-month trend line so there are no billing surprises.</p>
-        </div>
-        <div class="showcase-media">
-          <img src="screenshots/spending.png" alt="Spending dashboard" />
-        </div>
-      </div>
-
-      <!-- Widgets trio -->
-      <div class="showcase-block reveal">
-        <div class="showcase-kicker">Widgets</div>
-        <h3>Small, medium, large — all native WidgetKit.</h3>
-        <p>Pick one account to hero or rotate through all of them. Lands on your desktop, Notification Center, and Stage Manager side-panel.</p>
-        <div class="widget-trio">
-          <img class="widget small"  src="screenshots/small-widget.png"  alt="Small widget" />
-          <img class="widget medium" src="screenshots/medium-widget.png" alt="Medium widget" />
-          <img class="widget large"  src="screenshots/large-widget.png"  alt="Large widget" />
-        </div>
-      </div>
-
-      <!-- Widgets composite (compact) -->
-      <div class="showcase-block reveal">
-        <div class="showcase-kicker">Widgets</div>
-        <h3>All three sizes, side by side.</h3>
-        <p>Drop them anywhere macOS lets you — desktop, Notification Center, Stage Manager.</p>
-        <div class="showcase-media" style="max-width: 720px; margin: 0 auto;">
-          <img src="screenshots/full-widgets.png" alt="AI Stats widgets composite" />
-        </div>
-      </div>
-
-      <!-- Menu bar settings -->
-      <div class="showcase-row reveal">
-        <div class="showcase-text">
-          <div class="showcase-kicker">Menu bar</div>
-          <h3>Tuned to the last pixel.</h3>
-          <p>Pick which accounts and which metrics show in the menu bar, configure colors, compact mode, reset cadence — all without leaving the app.</p>
-        </div>
-        <div class="showcase-media">
-          <img src="screenshots/menubar-settings.png" alt="Menu bar settings" />
-        </div>
-      </div>
-    </section>
-
-    <section id="features" class="reveal">
-      <div class="section-eyebrow">Features</div>
-      <h2>Everything you need, nothing you don't.</h2>
-      <p class="section-lead">AI Stats is built from the ground up for macOS. No dashboards to open, no web app to log in to, no account to create.</p>
-
-      <div class="features reveal-stagger">
-        <div class="card">
-          <span class="feature-icon g-sky-blue" aria-hidden="true">
-            <!-- Mini menu bar with progress pill + clock dot -->
-            <svg viewBox="0 0 32 32" fill="currentColor"><rect x="2" y="6" width="28" height="8" rx="2" opacity="0.35"/><rect x="5" y="8.5" width="11" height="3" rx="1.5"/><rect x="5" y="8.5" width="7" height="3" rx="1.5" opacity="0.55"/><circle cx="25" cy="10" r="1.4"/></svg>
-          </span>
-          <h3>At a glance in your menu bar</h3>
-          <p>A live progress indicator for the account that matters most, right next to your clock.</p>
-        </div>
-
-        <div class="card card-providers">
-          <div class="provider-row" aria-hidden="true">
-            <img src="providers/claude.png" alt="" />
-            <img src="providers/chatgpt.png" alt="" />
-            <img src="providers/codex.png" alt="" />
-            <img src="providers/cursor.png" alt="" />
-            <img src="providers/gemini.png" alt="" />
+        <div class="split-stage">
+          <div class="pop-stage show rise js-pop" style="--d:.08s">
+            <div class="mesh" aria-hidden="true"><i class="m1"></i><i class="m2"></i><i class="m3"></i><i class="m4"></i></div>
+            <div class="mb" aria-hidden="true">
+              <svg class="mb-apple"><use href="#g-apple"/></svg>
+              <b>Finder</b><i style="width:22px"></i><i style="width:26px"></i><i style="width:19px"></i>
+              <span class="sp"></span>
+              <span class="mb-item"><span class="mb-logo js-mb-logo"></span><span class="mb-pair"><small class="js-mb-la">5H</small><b class="js-mb-a">62%</b></span><span class="mb-pair"><small class="js-mb-lb">7D</small><b class="js-mb-b">88%</b></span></span>
+              <span class="mb-clock">Fri 9:41</span>
+            </div>
+            <div class="pop-win" aria-hidden="true"><div class="pop-win-bar"><i></i><i></i><i></i></div><div class="pop-win-body"><span class="ttl"></span><span class="ln"></span><span class="ln" style="width:78%"></span><span class="ln"></span><span class="ln" style="width:52%"></span><span class="blk"></span><span class="ln" style="width:66%"></span><span class="ln"></span></div></div>
+            <div class="pop" role="group" aria-label="AI Stats menu bar popover">
+              <span class="pop-nub" aria-hidden="true"></span>
+              <div class="pop-tabs js-pop-tabs" role="tablist" aria-label="Accounts"></div>
+              <div class="pop-head">
+                <span class="pop-logo js-pop-logo" aria-hidden="true"></span>
+                <span class="pop-name"><b class="js-pop-name">Claude Max</b><small><i class="dot"></i><span class="js-pop-plan">Max 20x</span></small></span>
+                <span class="pop-tag js-pop-tag">Work</span>
+              </div>
+              <div class="pop-cards js-pop-cards"></div>
+              <div class="pop-foot">
+                <span class="pop-chip"><svg aria-hidden="true"><use href="#g-clock"/></svg><span class="js-pop-refresh">34s</span></span>
+                <span class="sp"></span>
+                <span class="pop-btn">Dashboard</span>
+              </div>
+            </div>
           </div>
-          <h3>Every major AI service</h3>
-          <p>Claude, ChatGPT, Codex, Cursor, Anthropic API, OpenAI API, Gemini — add as many accounts as you need.</p>
-        </div>
-
-        <div class="card">
-          <span class="feature-icon g-mint-emerald" aria-hidden="true">
-            <!-- Three stacked widgets (small, medium, large) -->
-            <svg viewBox="0 0 32 32" fill="currentColor"><rect x="4" y="4" width="10" height="10" rx="2.5"/><rect x="16" y="4" width="12" height="10" rx="2.5" opacity="0.55"/><rect x="4" y="16" width="24" height="12" rx="2.5" opacity="0.35"/></svg>
-          </span>
-          <h3>WidgetKit widgets</h3>
-          <p>Small, medium, and large widgets for your desktop and Notification Center. Always up to date.</p>
-        </div>
-
-        <div class="card">
-          <span class="feature-icon g-amber-orange" aria-hidden="true">
-            <!-- Bell with a red notification dot -->
-            <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 3.5a1.6 1.6 0 00-1.6 1.6V6A8 8 0 007 14v3.8c0 1-.3 2-.9 2.8l-1.4 2a1.4 1.4 0 001.1 2.2h20.4a1.4 1.4 0 001.1-2.2l-1.4-2a4.7 4.7 0 01-.9-2.8V14a8 8 0 00-7.4-7.99V5.1A1.6 1.6 0 0016 3.5z"/><path d="M13.2 27a3 3 0 005.6 0z"/><circle cx="23" cy="8" r="3" fill="#FF4B5C" stroke="white" stroke-width="1.4"/></svg>
-          </span>
-          <h3>Smart alerts</h3>
-          <p>Native notifications when you cross 60%, 80%, or 90% of any quota — with configurable thresholds.</p>
-        </div>
-
-        <div class="card">
-          <span class="feature-icon g-pink-magenta" aria-hidden="true">
-            <!-- Two overlapping category tags -->
-            <svg viewBox="0 0 32 32" fill="currentColor"><path d="M3 6a3 3 0 013-3h7.2a3 3 0 012.12.88l9.3 9.3a3 3 0 010 4.24l-7.18 7.18a3 3 0 01-4.24 0L3.88 15.3A3 3 0 013 13.18V6z" opacity="0.45"/><path d="M9 13a3 3 0 013-3h7.2a3 3 0 012.12.88l9.3 9.3a3 3 0 010 4.24l-7.18 7.18a3 3 0 01-4.24 0L9.88 22.3A3 3 0 019 20.18V13z"/><circle cx="14.5" cy="18.5" r="1.6" fill="#3b0b2a"/></svg>
-          </span>
-          <h3>Labels &amp; categories</h3>
-          <p>Organize accounts by Work, Personal, Client — and see totals per category, not just per service.</p>
-        </div>
-
-        <div class="card">
-          <span class="feature-icon g-lilac-indigo" aria-hidden="true">
-            <!-- Shield with padlock -->
-            <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 2.5l11 4v8.5c0 7-4.7 11.5-11 13.5-6.3-2-11-6.5-11-13.5V6.5l11-4z" opacity="0.5"/><path d="M16 2.5l11 4v8.5c0 7-4.7 11.5-11 13.5z"/><rect x="11" y="14" width="10" height="8" rx="1.5" fill="white"/><path d="M13 14v-2.2a3 3 0 016 0V14" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round"/><circle cx="16" cy="17.8" r="1.2" fill="#2a1265"/></svg>
-          </span>
-          <h3>100% on-device</h3>
-          <p>No backend, no analytics, no telemetry. Your credentials live in the macOS Keychain — never ours.</p>
+          <p class="show-status rise" style="--d:.14s">The numbers here are a demo. AI Stats reads yours from each provider.</p>
         </div>
       </div>
     </section>
 
-    <section id="privacy" class="reveal">
-      <div class="privacy-callout">
-        <div>
-          <div class="section-eyebrow" style="margin-bottom:8px;">Privacy</div>
-          <h2>Zero data collection. Ever.</h2>
-          <p>AI Stats doesn't have a server. There's no user account, no cloud sync, no analytics SDK. Every credential stays in your Keychain and every request goes straight from your Mac to the AI provider you chose.</p>
+    <section id="colours" class="sec sec-colours reveal" data-live aria-labelledby="col-title">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="container">
+        <div class="meter show rise js-meter">
+          <div class="mesh" aria-hidden="true"><i class="m1"></i><i class="m2"></i><i class="m3"></i><i class="m4"></i></div>
+          <div class="toast js-toast" role="status">
+            <img src="img/app-icon.webp" alt="" width="34" height="34" />
+            <span class="toast-tx"><span class="toast-top"><b>AI Stats</b><small>now</small></span><b class="toast-title">Claude Max — 5-Hour Usage</b><span class="js-toast-body">Usage at 75% — Getting close to your limit.</span></span>
+          </div>
+          <div class="meter-card">
+            <div class="meter-row">
+              <span class="tile logo sm"><img src="img/claude.webp" alt="" width="40" height="40" /></span>
+              <span class="meter-name"><b>Claude Max</b><small>5-Hour Usage</small></span>
+              <span class="status-pill js-meter-pill">Good</span>
+              <output class="meter-num js-meter-num" for="meter-range">42%</output>
+            </div>
+            <div class="meter-alerts" aria-hidden="true">
+              <span class="js-alert" data-at="50" style="--at:50"><svg><use href="#g-bell"/></svg>50<i>%</i></span>
+              <span class="js-alert" data-at="75" style="--at:75"><svg><use href="#g-bell"/></svg>75<i>%</i></span>
+              <span class="js-alert" data-at="90" style="--at:90"><svg><use href="#g-bell"/></svg>90<i>%</i></span>
+            </div>
+            <div class="meter-bar" aria-hidden="true">
+              <span class="meter-fill js-meter-fill"></span>
+              <span class="mk" style="--at:60"><i></i><small>60</small></span>
+              <span class="mk" style="--at:80"><i></i><small>80</small></span>
+              <span class="mk" style="--at:90"><i></i><small>90</small></span>
+            </div>
+            <label class="meter-range"><span class="sr-only">Usage of the 5-hour limit</span><input id="meter-range" class="js-meter-range" type="range" min="0" max="110" step="1" value="42" /></label>
+            <p class="meter-reset"><svg aria-hidden="true"><use href="#g-clock"/></svg>Resets in <b class="js-meter-reset">2h 14m</b></p>
+          </div>
         </div>
-        <a href="privacy.html" class="btn btn-ghost">Read the privacy policy →</a>
+        <div class="sec-head center">
+          <h2 id="col-title" class="rise" style="--d:.08s">Limits colour as you go</h2>
+          <p class="rise" style="--d:.14s">Green under 60%, yellow to 79, orange to 89, red from 90. Alerts arrive at 50, 75 and 90%, or at thresholds you set per account. Drag the slider to try it.</p>
+          <ul class="legend rise" style="--d:.2s" aria-label="Status colours">
+            <li style="--c:var(--st-good)"><b>Good</b><small>under 60%</small></li>
+            <li style="--c:var(--st-caution)"><b>Caution</b><small>60–79%</small></li>
+            <li style="--c:var(--st-warning)"><b>Warning</b><small>80–89%</small></li>
+            <li style="--c:var(--st-over)"><b>Over</b><small>90% and up</small></li>
+          </ul>
+        </div>
       </div>
     </section>
 
+    <section id="providers" class="sec sec-providers reveal" aria-labelledby="pv-title">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="container">
+        <div class="sec-head">
+          <h2 id="pv-title" class="rise">The plans you already pay for, side by side</h2>
+          <p class="rise" style="--d:.06s">Connect each one the way its provider allows: a web sign-in, the app you already use, or an API key. AI Stats reads the same numbers the provider shows you.</p>
+        </div>
+        <ul class="pv-grid">
+          <li class="pv rise" style="--d:.06s"><span class="tile logo"><img src="img/claude.webp" alt="" width="48" height="48" loading="lazy" /></span><h3>Claude</h3><p>5-hour and weekly limits, Sonnet and Opus separately, each with its reset.</p><span class="pv-how">Web sign-in or API key</span></li>
+          <li class="pv rise" style="--d:.09s"><span class="tile logo"><img src="img/chatgpt.webp" alt="" width="48" height="48" loading="lazy" /></span><h3>ChatGPT</h3><p>Your plan's usage limits, read from the session you're signed in to.</p><span class="pv-how">Web sign-in or API key</span></li>
+          <li class="pv rise" style="--d:.12s"><span class="tile logo"><img src="img/codex.webp" alt="" width="48" height="48" loading="lazy" /></span><h3>Codex</h3><p>5-hour and weekly windows, plus the days until your plan renews.</p><span class="pv-how">Codex sign-in or API key</span></li>
+          <li class="pv rise" style="--d:.15s"><span class="tile logo"><img src="img/cursor.webp" alt="" width="48" height="48" loading="lazy" /></span><h3>Cursor</h3><p>Premium, Auto and API usage as three buckets, so you know which one is running out.</p><span class="pv-how">Cursor sign-in</span></li>
+          <li class="pv rise" style="--d:.18s"><span class="tile logo glyph" style="--g:#6E40C9"><svg><use href="#g-copilot"/></svg></span><h3>GitHub Copilot</h3><p>Premium requests and chat quota for the month.</p><span class="pv-how">GitHub token</span></li>
+          <li class="pv rise" style="--d:.21s"><span class="tile logo"><img src="img/gemini.webp" alt="" width="48" height="48" loading="lazy" /></span><h3>Gemini</h3><p>Daily requests and tokens against your key's limits.</p><span class="pv-how">API key</span></li>
+          <li class="pv rise" style="--d:.24s"><span class="tile logo glyph" style="--g:#14B8A6"><svg><use href="#g-openrouter"/></svg></span><h3>OpenRouter</h3><p>Credit balance, and how much of your key's quota is left.</p><span class="pv-how">API key</span></li>
+          <li class="pv pv-api rise" style="--d:.27s"><span class="tile logo glyph key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="m11 12 8.5-8.5M16 7l2.5 2.5M14 9l2 2"/></svg></span><h3>API keys</h3><p>Anthropic, OpenAI, Gemini and OpenRouter keys add spending from each billing API.</p><span class="pv-how">Spending and rate limits</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="widgets" class="sec sec-widgets reveal" aria-labelledby="wd-title">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="container">
+        <div class="wd show rise js-wd">
+          <div class="mesh" aria-hidden="true"><i class="m1"></i><i class="m2"></i><i class="m3"></i><i class="m4"></i></div>
+          <div class="wd-grid">
+            <div class="phone" aria-hidden="true">
+              <div class="phone-screen">
+                <div class="phone-status"><b>9:41</b><span class="island"></span><span class="phone-icons"><i></i><i></i><i></i></span></div>
+                <div class="phone-widgets">
+                  <div class="w w-small js-w-hero"></div>
+                  <div class="w w-small js-w-second"></div>
+                  <div class="w w-medium js-w-medium"></div>
+                </div>
+                <div class="phone-dock"><i></i><i></i><i></i><i></i></div>
+              </div>
+            </div>
+            <div class="mac-desk" aria-hidden="true">
+              <div class="desk-bar"><svg><use href="#g-apple"/></svg><i style="width:26px"></i><i style="width:20px"></i><i style="width:24px"></i><span class="sp"></span><i style="width:34px"></i></div>
+              <div class="mac-widgets">
+                <div class="w w-large js-w-large"></div>
+                <div class="w w-small w-mac js-w-mac"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="sec-head center">
+          <h2 id="wd-title" class="rise" style="--d:.08s">The number you need, without opening anything</h2>
+          <p class="rise" style="--d:.14s">Small, medium and large widgets on the Mac desktop, the iPhone and iPad Home Screen, and the Lock Screen. Pick the account each one follows.</p>
+          <div class="pick rise js-pick" style="--d:.2s" role="radiogroup" aria-label="Account the widget follows"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="devices" class="sec sec-devices reveal" aria-labelledby="dv-title">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="container">
+        <div class="sec-head center first">
+          <h2 id="dv-title" class="rise">Mac, iPhone and iPad. One app.</h2>
+          <p class="rise" style="--d:.06s">Menu bar, dashboard and desktop widgets on the Mac. The app and its widgets on iPhone and iPad. One download, and Pro unlocks on all of them.</p>
+          <div class="seg rise js-dev-seg" style="--d:.1s" role="tablist" aria-label="Device">
+            <button type="button" role="tab" id="tab-mac" aria-selected="true" aria-controls="dev-stage" data-dev="mac">Mac</button>
+            <button type="button" role="tab" id="tab-iphone" aria-selected="false" aria-controls="dev-stage" data-dev="iphone" tabindex="-1">iPhone</button>
+            <button type="button" role="tab" id="tab-ipad" aria-selected="false" aria-controls="dev-stage" data-dev="ipad" tabindex="-1">iPad</button>
+          </div>
+        </div>
+        <div id="dev-stage" class="dev-stage rise js-dev" style="--d:.14s" data-dev="mac" role="tabpanel" aria-labelledby="tab-mac">
+          <figure class="dev dev-mac"><div class="dev-win"><img src="img/shot-mac.webp" alt="The AI Stats dashboard on the Mac, showing a Claude account with its live 5-hour session and weekly limits for Sonnet and Opus." width="1600" height="1000" loading="lazy" /></div></figure>
+          <figure class="dev dev-iphone"><div class="dev-phone"><img src="img/shot-iphone.webp" alt="AI Stats on iPhone: the Overview tab with account count, warnings, average usage and the accounts that need attention." width="660" height="1434" loading="lazy" /></div></figure>
+          <figure class="dev dev-ipad"><div class="dev-tab"><img src="img/shot-ipad.webp" alt="AI Stats on iPad: the Overview tab." width="1032" height="1376" loading="lazy" /></div></figure>
+        </div>
+        <ul class="dev-facts">
+          <li class="rise" style="--d:.06s"><b>History</b><span>Usage over days and weeks, kept on the device.</span></li>
+          <li class="rise" style="--d:.1s"><b>Spending</b><span>Monthly plan prices and API spend, grouped by label.</span></li>
+          <li class="rise" style="--d:.14s"><b>Labels</b><span>Work, Personal, Client. Totals per label, not just per service.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="themes" class="sec sec-themes reveal" aria-labelledby="th-title">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="container">
+        <div class="th-stage rise" aria-hidden="true">
+          <div class="th-app">
+            <div class="th-side"><span class="th-nav on"><i></i>Live</span><span class="th-nav"><i></i>Spending</span><span class="th-nav"><i></i>Analytics</span><span class="th-nav"><i></i>Settings</span></div>
+            <div class="th-main">
+              <div class="th-top"><b>Live</b><span class="th-cta">Add Account</span></div>
+              <div class="th-stats">
+                <span class="th-stat"><small>Accounts</small><b>7</b></span>
+                <span class="th-stat"><small>Avg 5h</small><b style="color:var(--st-caution)">68%</b></span>
+                <span class="th-stat"><small>Warnings</small><b style="color:var(--st-over)">3</b></span>
+              </div>
+              <div class="th-chips"><span class="on">All</span><span>Work</span><span>Personal</span></div>
+              <div class="th-card">
+                <div class="th-row"><span class="tile logo xs"><img src="img/claude.webp" alt="" width="24" height="24" loading="lazy" /></span><b>Claude</b><span class="status-pill" data-s="warning">Warning</span><em style="color:var(--st-warning)">88%</em></div>
+                <div class="th-bar"><s style="width:88%;background:var(--st-warning)"></s></div>
+                <div class="th-row"><span class="tile logo xs"><img src="img/codex.webp" alt="" width="24" height="24" loading="lazy" /></span><b>Codex</b><span class="status-pill" data-s="caution">Caution</span><em style="color:var(--st-caution)">73%</em></div>
+                <div class="th-bar"><s style="width:73%;background:var(--st-caution)"></s></div>
+                <div class="th-row"><span class="tile logo xs"><img src="img/gemini.webp" alt="" width="24" height="24" loading="lazy" /></span><b>Gemini</b><span class="status-pill" data-s="good">Good</span><em style="color:var(--st-good)">7%</em></div>
+                <div class="th-bar"><s style="width:7%;background:var(--st-good)"></s></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="sec-head center">
+          <h2 id="th-title" class="rise" style="--d:.08s">Make it yours</h2>
+          <p class="rise" style="--d:.14s">Glossy or Clean, in one of six accents. The app and its widgets follow along, and so does this page. Status colours never change, so red always means red.</p>
+          <div class="materials rise" style="--d:.2s" role="radiogroup" aria-label="Style">
+            <button type="button" class="mat" role="radio" aria-checked="true" data-style="glossy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg>Glossy</button>
+            <button type="button" class="mat" role="radio" aria-checked="false" data-style="clean" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="15" rx="2.5"/><path d="M7.5 9h9M7.5 12.5h9M7.5 16h5"/></svg>Clean</button>
+          </div>
+          <div class="swatches rise js-swatches" style="--d:.24s" role="radiogroup" aria-label="Accent colour"></div>
+          <p class="swatch-name js-swatch-name" aria-live="polite"><b>Violet</b> · Free</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="privacy" class="sec sec-split sec-privacy reveal" data-live aria-labelledby="pr-title">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="container split">
+        <div class="split-copy">
+          <h2 id="pr-title" class="rise">Nothing goes through us</h2>
+          <p class="rise" style="--d:.06s">There's no AI Stats account and no AI Stats server. Your keys and sessions sit in the device Keychain and go only to the provider they belong to. Your history stays on the device.</p>
+          <p class="aside rise" style="--d:.1s"><a href="privacy.html">Read the privacy policy</a></p>
+        </div>
+        <div class="split-stage">
+          <div class="flow show rise" style="--d:.08s" aria-hidden="true">
+            <div class="mesh"><i class="m1"></i><i class="m2"></i><i class="m3"></i><i class="m4"></i></div>
+            <svg class="flow-lines" viewBox="0 0 560 300">
+              <path id="fl1" d="M170 150 C 270 150, 300 48, 372 48" />
+              <path id="fl2" d="M170 150 C 270 150, 300 116, 372 116" />
+              <path id="fl3" d="M170 150 C 270 150, 300 184, 372 184" />
+              <path id="fl4" d="M170 150 C 270 150, 300 252, 372 252" />
+              <g class="pkts">
+                <circle class="pkt" r="3.4"><animateMotion dur="2.8s" repeatCount="indefinite" begin="0s"><mpath href="#fl1"/></animateMotion></circle>
+                <circle class="pkt" r="3.4"><animateMotion dur="2.8s" repeatCount="indefinite" begin="0.7s"><mpath href="#fl2"/></animateMotion></circle>
+                <circle class="pkt" r="3.4"><animateMotion dur="2.8s" repeatCount="indefinite" begin="1.4s"><mpath href="#fl3"/></animateMotion></circle>
+                <circle class="pkt" r="3.4"><animateMotion dur="2.8s" repeatCount="indefinite" begin="2.1s"><mpath href="#fl4"/></animateMotion></circle>
+              </g>
+            </svg>
+            <div class="flow-dev">
+              <img src="img/app-icon.webp" alt="" width="60" height="60" loading="lazy" />
+              <b>Your device</b>
+              <span class="kc"><svg><use href="#g-lock"/></svg>Keychain</span>
+            </div>
+            <div class="flow-ghost"><b>AI Stats server</b><small>doesn't exist</small></div>
+            <ul class="flow-to">
+              <li><span class="tile logo xs"><img src="img/claude.webp" alt="" width="24" height="24" loading="lazy" /></span>claude.ai</li>
+              <li><span class="tile logo xs"><img src="img/chatgpt.webp" alt="" width="24" height="24" loading="lazy" /></span>chatgpt.com</li>
+              <li><span class="tile logo xs"><img src="img/cursor.webp" alt="" width="24" height="24" loading="lazy" /></span>cursor.com</li>
+              <li><span class="tile logo xs glyph" style="--g:#14B8A6"><svg><use href="#g-openrouter"/></svg></span>openrouter.ai</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <ul class="trust">
+          <li class="rise" style="--d:.06s"><b>No account to make</b><span>Install, add a provider, done. There's nothing to sign up for, and nothing of yours on our side to leak.</span></li>
+          <li class="rise" style="--d:.1s"><b>Keychain only</b><span>API keys and session cookies are encrypted by the system and used only to talk to that provider.</span></li>
+          <li class="rise" style="--d:.14s"><b>Diagnostics you can switch off</b><span>The Mac app sends anonymous crash reports and usage counts, off with one switch in Settings → General. iPhone and iPad send nothing.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="pricing" class="sec sec-price reveal" data-live aria-labelledby="price-title">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="container">
+        <div class="price-stage rise">
+          <div class="price-card">
+            <div class="price-main">
+              <span class="price-lbl">AI Stats Pro</span>
+              <span class="price-num">Once</span>
+              <span class="price-once">one purchase, not a subscription</span>
+            </div>
+            <span class="price-rule" aria-hidden="true"></span>
+            <ul class="price-list">
+              <li>Every account, side by side</li>
+              <li>Five more accents: Gold, Emerald, Blue, Rose and Slate</li>
+              <li>Mac, iPhone and iPad, with Family Sharing</li>
+            </ul>
+            <span class="shimmer" aria-hidden="true"></span>
+          </div>
+        </div>
+        <div class="sec-head center">
+          <h2 id="price-title" class="rise" style="--d:.08s">Free for your first account</h2>
+          <p class="rise" style="--d:.14s">Download AI Stats free and track one account for as long as you like. Pro is for when you have more than one. These stay free forever:</p>
+          <ul class="free-chips rise" style="--d:.2s">
+            <li><svg aria-hidden="true"><use href="#g-check"/></svg>One account</li>
+            <li><svg aria-hidden="true"><use href="#g-check"/></svg>Menu bar</li>
+            <li><svg aria-hidden="true"><use href="#g-check"/></svg>Widgets</li>
+            <li><svg aria-hidden="true"><use href="#g-check"/></svg>Alerts</li>
+            <li><svg aria-hidden="true"><use href="#g-check"/></svg>Violet theme</li>
+          </ul>
+          <div class="cta-row center rise" style="--d:.24s">
+            <a class="btn primary" href="https://apps.apple.com/app/id6762005507"><svg class="btn-ico" aria-hidden="true"><use href="#g-apple"/></svg>Download free</a>
+          </div>
+          <p class="fine rise" style="--d:.28s">The App Store shows Pro's price in your currency (US$7.99 in the US). Bought AI Stats before 2.0? You keep everything.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <section id="download" class="cta-band">
+        <img class="cta-icon" src="img/app-icon.webp" alt="" width="72" height="72" loading="lazy" />
+        <h2>See the limit coming.</h2>
+        <p class="lede">Free on the Mac App Store and the App Store. One account free forever, and one purchase for the rest.</p>
+        <div class="badges">
+          <a class="badge" href="https://apps.apple.com/app/id6762005507"><svg aria-hidden="true"><use href="#g-apple"/></svg><span><small>Download on the</small><b>Mac App Store</b></span></a>
+          <a class="badge" href="https://apps.apple.com/app/id6762005507"><svg aria-hidden="true"><use href="#g-apple"/></svg><span><small>Download on the</small><b>App Store</b></span></a>
+        </div>
+        <p class="req-note">macOS 14 Sonoma or later · iOS and iPadOS 18 or later</p>
+      </section>
+    </div>
+  </main>
+
+  <div class="container">
     <footer>
-      <div class="footer-row">
-        <div>© <span id="year">2026</span> Coursion. All rights reserved.</div>
-        <div class="footer-links">
-          <a href="privacy.html">Privacy</a>
+      <div class="links">
+        <a href="privacy.html">Privacy</a>
         <a href="press.html">Press</a>
-          <a href="mailto:support@coursion.studio">Support</a>
-        </div>
+        <a href="mailto:support@coursion.studio">Contact</a>
+        <a href="https://x.com/kuraydev" target="_blank" rel="noopener">@kuraydev</a>
       </div>
+      <div>© 2026 Coursion Studio</div>
     </footer>
   </div>
-
-  <!-- Lightbox: click any screenshot to zoom -->
-  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
-    <button class="lightbox-close" aria-label="Close">×</button>
-    <img alt="" />
-  </div>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Reveal on scroll: toggles .is-visible on elements marked .reveal /
-    // .reveal-stagger. We promote the element to a GPU layer (will-change)
-    // only for the duration of its transition and clear it afterwards so
-    // idle cards don't hold compositing layers forever — keeps the page
-    // feeling snappy even with a dozen reveals below the fold.
-    (function() {
-      var targets = document.querySelectorAll('.reveal, .reveal-stagger');
-      if (!('IntersectionObserver' in window)) {
-        targets.forEach(function(el) { el.classList.add('is-visible'); });
-        return;
-      }
-      var io = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (!entry.isIntersecting) return;
-          var el = entry.target;
-          el.style.willChange = 'transform, opacity';
-          el.classList.add('is-visible');
-          io.unobserve(el);
-          // Clear will-change after the longest transition + stagger has
-          // finished (~600ms covers both .reveal and .reveal-stagger).
-          setTimeout(function() { el.style.willChange = 'auto'; }, 650);
-        });
-      }, { threshold: 0.1, rootMargin: '0px 0px -10% 0px' });
-      targets.forEach(function(el) { io.observe(el); });
-    })();
-
-    // Lightbox: click a screenshot, get a zoomed-in view. Esc or click
-    // outside the image to close. Uses the `.lightbox-target` opt-in class
-    // so hero/widget images don't all pop open if we don't want them to.
-    (function() {
-      var lb = document.getElementById('lightbox');
-      var lbImg = lb.querySelector('img');
-      var lbClose = lb.querySelector('.lightbox-close');
-      // Any image inside .showcase-media is zoomable.
-      var targets = document.querySelectorAll('.showcase-media img, .hero-shot, .widget-trio .widget');
-      targets.forEach(function(img) {
-        img.style.cursor = 'zoom-in';
-        img.addEventListener('click', function() { open(img.src, img.alt); });
-      });
-
-      function open(src, alt) {
-        lbImg.src = src;
-        lbImg.alt = alt || '';
-        lb.classList.add('is-open');
-        lb.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-      }
-      function close() {
-        lb.classList.remove('is-open');
-        lb.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-        // Clear src so a second open re-triggers the fade-in.
-        setTimeout(function() { if (!lb.classList.contains('is-open')) lbImg.src = ''; }, 220);
-      }
-      lb.addEventListener('click', function(e) { if (e.target === lb || e.target === lbClose) close(); });
-      lbClose.addEventListener('click', close);
-      document.addEventListener('keydown', function(e) { if (e.key === 'Escape') close(); });
-    })();
-  </script>
 </body>
 </html>
