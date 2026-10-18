@@ -48,13 +48,13 @@
       <div class="bar-space" aria-hidden="true"></div>
       <p class="eyebrow">AI Stats</p>
       <h1>Privacy Policy</h1>
-      <p class="updated">Last updated: <time datetime="2026-09-21">September 21, 2026</time></p>
+      <p class="updated">Last updated: <time datetime="2026-10-18">October 18, 2026</time></p>
     </div>
   </header>
   <main class="container">
     <article class="prose">
         <div class="card">
-          <p><strong>Short version:</strong> AI Stats runs entirely on your device. There is no AI Stats account and no AI Stats server. Your credentials and usage history stay on your Mac, iPhone or iPad. The Mac app sends anonymous crash reports and anonymous feature-usage counts, never linked to you, never used for tracking, and you can switch them off in Settings → General. The iPhone and iPad app sends nothing.</p>
+          <p><strong>Short version:</strong> AI Stats runs entirely on your device. There is no AI Stats account and no AI Stats server. Your credentials and usage history stay on your Mac, iPhone or iPad. The Mac app sends anonymous crash reports and anonymous feature-usage counts, never linked to you, never used for tracking, and you can switch them off in Settings → General. The iPhone and iPad app sends nothing. This website counts page views on our own server, without cookies (section 7).</p>
         </div>
 
         <h2>1. Who we are</h2>
@@ -86,21 +86,25 @@
         <p>The only network requests the app makes are <strong>directly from your device to the AI provider you chose</strong>, using credentials you entered for your own account (for example, calls to the Anthropic or OpenAI API, or fetches from the Claude / ChatGPT / Codex / Cursor web sessions you are signed into). AI Stats does not route this traffic through any intermediary. The only other requests are the anonymous Mac diagnostics described in section 3, and App Store purchases, which Apple handles.</p>
 
         <h2>6. Tracking, analytics, and advertising</h2>
-        <p>We do not track you, show ads, use advertising frameworks, or fingerprint your device. Apart from the anonymous Mac diagnostics in section 3, no analytics are collected. The app's privacy manifest (<code>PrivacyInfo.xcprivacy</code>) declares <code>NSPrivacyTracking = false</code>, with crash data and product interaction listed as not linked to you and not used for tracking.</p>
+        <p>We do not track you, show ads, use advertising frameworks, or fingerprint your device. Apart from the anonymous Mac diagnostics in section 3, the app collects no analytics. This website counts page views, as described in section 7. The app's privacy manifest (<code>PrivacyInfo.xcprivacy</code>) declares <code>NSPrivacyTracking = false</code>, with crash data and product interaction listed as not linked to you and not used for tracking.</p>
 
-        <h2>7. Children's privacy</h2>
+        <h2>7. This website</h2>
+        <p>We count page views on this website so we know whether anyone is reading. The counting is done by our own server, Polaris, which runs on Google Cloud Run in Belgium. No analytics company is involved. There are no cookies, nothing is saved in your browser, and nothing follows you to other sites.</p>
+        <p>For each view the counter records the page path and, if there is one, the domain you arrived from. To count a visitor once per day rather than once per page, it computes a one-way hash of the date, the site, your IP address and your browser's user agent. Your IP address itself is never written down, and the hash is deleted after two days. What remains is a daily count of views and visitors per page.</p>
+        <p>The website is served by GitHub Pages, which may log requests (such as your IP address) as part of running that service, under GitHub's own privacy statement.</p>
+        <h2>8. Children's privacy</h2>
         <p>AI Stats is not directed at children. We do not knowingly collect personal data from anyone, including children.</p>
 
-        <h2>8. Data deletion</h2>
+        <h2>9. Data deletion</h2>
         <p>To remove all AI Stats data from your device, delete any accounts from within the app (this removes their Keychain entries) and then delete the app. We hold nothing that identifies you, so there is nothing for us to delete on our side.</p>
 
-        <h2>9. Third-party services</h2>
+        <h2>10. Third-party services</h2>
         <p>When you add an account, AI Stats communicates with the AI provider you selected. That provider's privacy policy governs their handling of your account. Anonymous Mac diagnostics go to Sentry and PostHog as described in section 3. AI Stats does not sell or share data with anyone else.</p>
 
-        <h2>10. Changes to this policy</h2>
+        <h2>11. Changes to this policy</h2>
         <p>If we make material changes to this policy, we will update the "Last updated" date above and, for significant changes, note them in the app's release notes.</p>
 
-        <h2>11. Contact</h2>
+        <h2>12. Contact</h2>
         <p>Questions about this policy? Email <a href="mailto:support@coursion.studio">support@coursion.studio</a>.</p>
     </article>
   </main>
