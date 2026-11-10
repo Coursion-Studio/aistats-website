@@ -189,7 +189,7 @@
 
   const ACCOUNTS = [
     {
-      id: "claude", provider: "claude", tab: "Claude Max", name: "Claude Max", plan: "Max 20x", tag: "Work",
+      id: "claude", provider: "claude", tab: "Claude Max", name: "Claude Max", plan: "Max", tag: "Work",
       mb: ["5H", "7D"],
       cards: [
         { title: "Current session", icon: "#E8A838", rows: [{ name: "5-Hour Usage", v: 62, reset: 2 * 3600 + 14 * 60 + 9, creep: true }] },
@@ -493,12 +493,12 @@
   }
 
   const ACCENTS = [
-    { id: "violet", name: "Violet", accent: "#A78BFA", second: "#6D28D9", pro: false },
-    { id: "gold", name: "Gold", accent: "#E8A838", second: "#9A4A0B", pro: true },
-    { id: "emerald", name: "Emerald", accent: "#34D399", second: "#04694B", pro: true },
-    { id: "blue", name: "Blue", accent: "#5B9BFA", second: "#1E3A8A", pro: true },
-    { id: "rose", name: "Rose", accent: "#F43F5E", second: "#881337", pro: true },
-    { id: "slate", name: "Slate", accent: "#94A3B8", second: "#334155", pro: true }
+    { id: "violet", name: "Violet", accent: "#A78BFA", second: "#6D28D9" },
+    { id: "gold", name: "Gold", accent: "#E8A838", second: "#9A4A0B" },
+    { id: "emerald", name: "Emerald", accent: "#34D399", second: "#04694B" },
+    { id: "blue", name: "Blue", accent: "#5B9BFA", second: "#1E3A8A" },
+    { id: "rose", name: "Rose", accent: "#F43F5E", second: "#881337" },
+    { id: "slate", name: "Slate", accent: "#94A3B8", second: "#334155" }
   ];
   const rgb = (hex) => [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16));
   const lum = (hex) => {
@@ -532,20 +532,16 @@
       name.innerHTML = "";
       const b = document.createElement("b");
       b.textContent = look.accent.name;
-      const t = document.createElement("span");
-      t.className = "tag " + (look.accent.pro ? "pro" : "free");
-      t.textContent = look.accent.pro ? "Pro" : "Free";
-      name.append(b, " ", t, look.style === "clean" ? " · Clean" : " · Glossy");
+      name.append(b, look.style === "clean" ? " · Clean" : " · Glossy");
     };
     ACCENTS.forEach((a, i) => {
       const b = document.createElement("button");
       b.type = "button";
       b.className = "swatch";
       b.setAttribute("role", "radio");
-      b.setAttribute("aria-label", a.name + (a.pro ? ", Pro" : ", free"));
+      b.setAttribute("aria-label", a.name);
       b.style.setProperty("--a", a.accent);
       b.style.setProperty("--b", `color-mix(in srgb, ${a.second} 70%, #120D1D)`);
-      if (a.pro) b.innerHTML = '<span class="pro" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="currentColor" d="m12 3.5 2.5 5.3 5.8.7-4.3 4 1.1 5.7L12 16.4l-5.1 2.8L8 13.5l-4.3-4 5.8-.7z"/></svg></span>';
       b.addEventListener("click", () => pickAccent(i));
       sw.appendChild(b);
     });
